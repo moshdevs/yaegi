@@ -1,5 +1,5 @@
 __version__ = "0.1.0"
-__author__ = "Yaegi Team"
+__author__ = "moshdevs"
 __email__ = "support@yaegi.dev"
 __license__ = "MIT"
 __description__ = "A comprehensive Vedic Astrology (Jyotish) library for Python"
