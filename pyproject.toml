@@ -8,8 +8,8 @@ version = "0.1.0"
 description = "A comprehensive Vedic Astrology (Jyotish) library for Python"
 readme = "README.md"
 license = { text = "MIT" }
-authors = [{ name = "moshdevs", email = "support@raeist.dev" }]
-maintainers = [{ name = "Yaegi Team", email = "support@yaegi.dev" }]
+authors = [{ name = "moshdevs", email = "contact@raeist.dev" }]
+maintainers = [{ name = "moshdevs", email = "contact@raeist.dev" }]
 keywords = ["astrology", "vedic", "jyotish", "kundali", "horoscope", "panchang"]
 classifiers = [
     "Development Status :: 4 - Beta",
@@ -28,12 +28,12 @@ dependencies = []
 [project.optional-dependencies]
 dev = [
     "pytest>=7.3",
-    "pytest-cov>=4.0",
+    "pytest-cov>=5.0",
     "black>=23.7",
     "flake8>=6.1",
     "mypy>=1.5",
     "pre-commit>=3.4",
-    "isort>=6.15",
+    "isort>=5.15",
     "ruff>=0.1"
 ]
 docs = [
@@ -46,6 +46,7 @@ Homepage = "https://github.com/yaegi/yaegi"
 Documentation = "https://yaegi.readthedocs.io"
 Repository = "https://github.com/yaegi/yaegi.git"
 "Bug Tracker" = "https://github.com/yaegi/yaegi/issues"
+Changelog = "https://github.com/yaegi/yaegi/releases"
 
 [project.scripts]
 yaegi = "yaegi.cli.main:main"
@@ -115,7 +116,7 @@ strict_equality = true
 
 [tool.coverage.run]
 source = ["yaegi"]
-omit = ["*/tests/*", "*/test_*.py", "setup.py"]
+omit = ["*/test_*.py", "setup.py"]
 
 [tool.coverage.report]
 exclude_lines = [
@@ -129,6 +130,6 @@ exclude_lines = [
 [tool.pre-commit]
 repos = [
     {repo = "https://github.com/psf/black", rev = "23.7.0", hooks = [{id = "black"}]},
-    {repo = "https://github.com/PyCQA/isort", rev = "6.15.0", hooks = [{id = "isort"}]},
+    {repo = "https://github.com/PyCQA/isort", rev = "5.15.0", hooks = [{id = "isort"}]},
     {repo = "https://github.com/charliermarsh/ruff-pre-commit", rev = "0.1.241", hooks = [{id = "ruff"}]},
 ]
