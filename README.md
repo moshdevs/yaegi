@@ -9,7 +9,7 @@
 </p>
 
 <p align="center">
-  [<a href="https://yaegi.readthedocs.io">📖 Docs</a>] 
+  [<a href="https://github.com/moshdevs/yaegi/blob/master/guide/docs.md">📖 Docs</a>] 
   [<a href="https://github.com/moshdevs/yaegi/discussions">💬 Discussions</a>] 
   [<a href="https://pypi.org/project/yaegi/">⬇️ PyPI</a>] 
 </p>
