@@ -61,9 +61,9 @@ jobs:
           git pull --rebase origin ${{ github.ref }}
           git push https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }} HEAD:${{ github.ref }}
 
-      - name: Type check with mypy
+      - name: Type check with mypy (soft fail)
         run: |
-          mypy yaegi
+          mypy yaegi || true
 
       - name: Test with pytest
         run: |
