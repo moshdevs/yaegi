@@ -1,5 +1,5 @@
 [build-system]
-requires = ["setuptools>=65", "wheel", "setuptools_scm[toml]>=6.2"]
+requires = ["setuptools>=45", "wheel", "setuptools_scm[toml]>=6.2"]
 build-backend = "setuptools.build_meta"
 
 [project]
@@ -8,8 +8,12 @@ version = "0.1.0"
 description = "A comprehensive Vedic Astrology (Jyotish) library for Python"
 readme = "README.md"
 license = {text = "MIT"}
-authors = [{name = "Yaegi Team", email = "support@yaegi.dev"}]
-maintainers = [{name = "Yaegi Team", email = "support@yaegi.dev"}]
+authors = [
+    {name = "Yaegi Team", email = "support@yaegi.dev"}
+]
+maintainers = [
+    {name = "Yaegi Team", email = "support@yaegi.dev"}
+]
 keywords = ["astrology", "vedic", "jyotish", "kundali", "horoscope", "panchang"]
 classifiers = [
     "Development Status :: 4 - Beta",
@@ -17,7 +21,11 @@ classifiers = [
     "Intended Audience :: End Users/Desktop",
     "License :: OSI Approved :: MIT License",
     "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
     "Topic :: Scientific/Engineering :: Astronomy",
     "Topic :: Religion",
     "Operating System :: OS Independent",
@@ -27,18 +35,16 @@ dependencies = []
 
 [project.optional-dependencies]
 dev = [
-    "pytest>=7.3",
+    "pytest>=7.0",
     "pytest-cov>=4.0",
-    "black>=23.7",
-    "flake8>=6.1",
-    "mypy>=1.5",
-    "pre-commit>=3.4",
-    "isort>=6.15",
-    "ruff>=0.1"
+    "black>=23.0",
+    "flake8>=6.0",
+    "mypy>=1.0",
+    "pre-commit>=3.0",
 ]
 docs = [
-    "sphinx>=7.0",
-    "sphinx-rtd-theme>=1.2",
+    "sphinx>=5.0",
+    "sphinx-rtd-theme>=1.0",
 ]
 
 [project.urls]
@@ -50,19 +56,19 @@ Repository = "https://github.com/yaegi/yaegi.git"
 [project.scripts]
 yaegi = "yaegi.cli.main:main"
 
-[tool.setuptools.packages.find]
-where = ["yaegi"]
-include = ["yaegi*"]
+[tool.setuptools]
+packages = ["yaegi", "yaegi.config", "yaegi.core", "yaegi.models", "yaegi.calculations", "yaegi.utils", "yaegi.cli", "yaegi.data"]
 
 [tool.setuptools.package-data]
-yaegi = ["data/*.json", "py.typed"]
+yaegi = ["data/*.json"]
 
 [tool.black]
 line-length = 88
-target-version = ["py311"]
-include = "\\.pyi?$"
+target-version = ['py38']
+include = '\.pyi?$'
 extend-exclude = '''
 /(
+  # directories
   \.eggs
   | \.git
   | \.hg
@@ -73,19 +79,6 @@ extend-exclude = '''
   | dist
 )/
 '''
-
-[tool.isort]
-profile = "black"
-line_length = 88
-known_third_party = ["yaegi"]
-combine_as_imports = true
-multi_line_output = 3
-
-[tool.ruff]
-line-length = 88
-select = ["E", "F", "I", "B", "C", "N"]
-ignore = ["E203", "W503"]
-target-version = "py311"
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
@@ -115,7 +108,11 @@ strict_equality = true
 
 [tool.coverage.run]
 source = ["yaegi"]
-omit = ["*/tests/*", "*/test_*.py", "setup.py"]
+omit = [
+    "*/tests/*",
+    "*/test_*.py",
+    "setup.py",
+]
 
 [tool.coverage.report]
 exclude_lines = [
@@ -124,11 +121,4 @@ exclude_lines = [
     "raise AssertionError",
     "raise NotImplementedError",
     "if __name__ == .__main__.:",
-]
-
-[tool.pre-commit]
-repos = [
-    {repo = "https://github.com/psf/black", rev = "23.7.0", hooks = [{id = "black"}]},
-    {repo = "https://github.com/PyCQA/isort", rev = "6.15.0", hooks = [{id = "isort"}]},
-    {repo = "https://github.com/charliermarsh/ruff-pre-commit", rev = "0.1.241", hooks = [{id = "ruff"}]},
 ]
