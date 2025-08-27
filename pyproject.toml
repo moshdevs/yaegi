@@ -51,7 +51,7 @@ Repository = "https://github.com/yaegi/yaegi.git"
 yaegi = "yaegi.cli.main:main"
 
 [tool.setuptools.packages.find]
-where = ["yaegi"]
+where = ["."]
 include = ["yaegi*"]
 
 [tool.setuptools.package-data]
