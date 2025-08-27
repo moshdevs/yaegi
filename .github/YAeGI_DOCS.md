@@ -35,7 +35,7 @@ pip install yaegi
 Or install from source:
 
 ``` bash
-git clone https://github.com/<your-username>/yaegi.git
+git clone https://github.com/moshdevs/yaegi.git
 cd yaegi
 pip install .
 ```
