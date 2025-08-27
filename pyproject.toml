@@ -1,0 +1,134 @@
+[build-system]
+requires = ["setuptools>=65", "wheel", "setuptools_scm[toml]>=6.2"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "yaegi"
+version = "0.1.0"
+description = "A comprehensive Vedic Astrology (Jyotish) library for Python"
+readme = "README.md"
+license = {text = "MIT"}
+authors = [{name = "Yaegi Team", email = "support@yaegi.dev"}]
+maintainers = [{name = "Yaegi Team", email = "support@yaegi.dev"}]
+keywords = ["astrology", "vedic", "jyotish", "kundali", "horoscope", "panchang"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "Intended Audience :: End Users/Desktop",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.11",
+    "Topic :: Scientific/Engineering :: Astronomy",
+    "Topic :: Religion",
+    "Operating System :: OS Independent",
+]
+requires-python = ">=3.11"
+dependencies = []
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.3",
+    "pytest-cov>=4.0",
+    "black>=23.7",
+    "flake8>=6.1",
+    "mypy>=1.5",
+    "pre-commit>=3.4",
+    "isort>=6.15",
+    "ruff>=0.1"
+]
+docs = [
+    "sphinx>=7.0",
+    "sphinx-rtd-theme>=1.2",
+]
+
+[project.urls]
+Homepage = "https://github.com/yaegi/yaegi"
+Documentation = "https://yaegi.readthedocs.io"
+Repository = "https://github.com/yaegi/yaegi.git"
+"Bug Tracker" = "https://github.com/yaegi/yaegi/issues"
+
+[project.scripts]
+yaegi = "yaegi.cli.main:main"
+
+[tool.setuptools.packages.find]
+where = ["yaegi"]
+include = ["yaegi*"]
+
+[tool.setuptools.package-data]
+yaegi = ["data/*.json", "py.typed"]
+
+[tool.black]
+line-length = 88
+target-version = ["py311"]
+include = "\\.pyi?$"
+extend-exclude = '''
+/(
+  \.eggs
+  | \.git
+  | \.hg
+  | \.mypy_cache
+  | \.tox
+  | \.venv
+  | build
+  | dist
+)/
+'''
+
+[tool.isort]
+profile = "black"
+line_length = 88
+known_third_party = ["yaegi"]
+combine_as_imports = true
+multi_line_output = 3
+
+[tool.ruff]
+line-length = 88
+select = ["E", "F", "I", "B", "C", "N"]
+ignore = ["E203", "W503"]
+target-version = "py311"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+addopts = [
+    "--cov=yaegi",
+    "--cov-report=term-missing",
+    "--cov-report=html",
+    "--strict-markers",
+    "--disable-warnings",
+]
+
+[tool.mypy]
+python_version = "3.11"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = true
+disallow_incomplete_defs = true
+check_untyped_defs = true
+disallow_untyped_decorators = true
+no_implicit_optional = true
+warn_redundant_casts = true
+warn_unused_ignores = true
+warn_no_return = true
+warn_unreachable = true
+strict_equality = true
+
+[tool.coverage.run]
+source = ["yaegi"]
+omit = ["*/tests/*", "*/test_*.py", "setup.py"]
+
+[tool.coverage.report]
+exclude_lines = [
+    "pragma: no cover",
+    "def __repr__",
+    "raise AssertionError",
+    "raise NotImplementedError",
+    "if __name__ == .__main__.:",
+]
+
+[tool.pre-commit]
+repos = [
+    {repo = "https://github.com/psf/black", rev = "23.7.0", hooks = [{id = "black"}]},
+    {repo = "https://github.com/PyCQA/isort", rev = "6.15.0", hooks = [{id = "isort"}]},
+    {repo = "https://github.com/charliermarsh/ruff-pre-commit", rev = "0.1.241", hooks = [{id = "ruff"}]},
+]
