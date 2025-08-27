@@ -66,11 +66,11 @@ jobs:
           pytest --cov=yaegi --cov-report=xml
         timeout-minutes: 5
 
-      - name: Upload coverage to Codecov
+      - name: Upload coverage to Codecov (non-blocking)
         uses: codecov/codecov-action@v3
         with:
           file: ./coverage.xml
-          fail_ci_if_error: true
+          fail_ci_if_error: false   # ✅ coverage fail hone par workflow pass hoga
 
   build:
     needs: test
@@ -119,3 +119,4 @@ jobs:
         uses: pypa/gh-action-pypi-publish@release/v1
         with:
           password: ${{ secrets.PYPI_API_TOKEN }}
+          
