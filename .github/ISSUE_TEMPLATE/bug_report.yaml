@@ -18,7 +18,7 @@ body:
     id: system-info
     attributes:
       label: System Info
-      description: Output of `npx envinfo --system --binaries --browsers`
+      description: Output
       render: Shell
       placeholder: System, Binaries, Browsers
     validations:
