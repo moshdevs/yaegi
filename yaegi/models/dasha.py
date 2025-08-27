@@ -2,6 +2,7 @@ from dataclasses import dataclass
 from datetime import datetime
 from typing import Optional
 
+
 @dataclass
 class DashaPeriod:
     planet: str
@@ -55,4 +56,3 @@ class VimshottariDasha:
 
     def get_active_periods(self) -> list[DashaPeriod]:
         return [period for period in self.periods if period.is_active]
-      

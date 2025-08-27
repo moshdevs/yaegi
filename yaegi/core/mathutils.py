@@ -16,7 +16,9 @@ def is_conjunction(lon1: float, lon2: float, orb: float = 8.0) -> bool:
 def is_opposition(lon1: float, lon2: float, orb: float = 8.0) -> bool:
     """Check if two planets are in opposition within given orb"""
     diff: float = abs(lon1 - lon2)
-    opposition_angle: float = min(abs(diff - 180), abs(diff - 180 + 360), abs(diff - 180 - 360))
+    opposition_angle: float = min(
+        abs(diff - 180), abs(diff - 180 + 360), abs(diff - 180 - 360)
+    )
     return opposition_angle <= orb
 
 
@@ -24,7 +26,9 @@ def is_trine(lon1: float, lon2: float, orb: float = 8.0) -> bool:
     """Check if two planets are in trine (120° aspect) within given orb"""
     diff: float = abs(lon1 - lon2)
     for angle in (120, 240):
-        aspect_diff: float = min(abs(diff - angle), abs(diff - angle + 360), abs(diff - angle - 360))
+        aspect_diff: float = min(
+            abs(diff - angle), abs(diff - angle + 360), abs(diff - angle - 360)
+        )
         if aspect_diff <= orb:
             return True
     return False
@@ -34,7 +38,9 @@ def is_square(lon1: float, lon2: float, orb: float = 8.0) -> bool:
     """Check if two planets are in square (90° aspect) within given orb"""
     diff: float = abs(lon1 - lon2)
     for angle in (90, 270):
-        aspect_diff: float = min(abs(diff - angle), abs(diff - angle + 360), abs(diff - angle - 360))
+        aspect_diff: float = min(
+            abs(diff - angle), abs(diff - angle + 360), abs(diff - angle - 360)
+        )
         if aspect_diff <= orb:
             return True
     return False
@@ -44,7 +50,9 @@ def is_sextile(lon1: float, lon2: float, orb: float = 6.0) -> bool:
     """Check if two planets are in sextile (60° aspect) within given orb"""
     diff: float = abs(lon1 - lon2)
     for angle in (60, 300):
-        aspect_diff: float = min(abs(diff - angle), abs(diff - angle + 360), abs(diff - angle - 360))
+        aspect_diff: float = min(
+            abs(diff - angle), abs(diff - angle + 360), abs(diff - angle - 360)
+        )
         if aspect_diff <= orb:
             return True
     return False
@@ -60,18 +68,18 @@ def calculate_house_position(planet_lon: float, ascendant: float) -> int:
 def get_planetary_strength(longitude: float, rashi: int) -> float:
     """Calculate simplified planetary strength based on sign position"""
     exaltation_degrees: Dict[int, int] = {
-        1: 10,   # Aries - Sun exalted at 10°
-        2: 27,   # Taurus - Moon exalted at 27°
-        3: 28,   # Gemini - Rahu exalted at 28°
-        4: 5,    # Cancer - Jupiter exalted at 5°
-        5: 10,   # Leo - Sun owns
-        6: 15,   # Virgo - Mercury exalted at 15°
-        7: 20,   # Libra - Saturn exalted at 20°
-        8: 28,   # Scorpio - Mars owns
-        9: 5,    # Sagittarius - Jupiter owns
+        1: 10,  # Aries - Sun exalted at 10°
+        2: 27,  # Taurus - Moon exalted at 27°
+        3: 28,  # Gemini - Rahu exalted at 28°
+        4: 5,  # Cancer - Jupiter exalted at 5°
+        5: 10,  # Leo - Sun owns
+        6: 15,  # Virgo - Mercury exalted at 15°
+        7: 20,  # Libra - Saturn exalted at 20°
+        8: 28,  # Scorpio - Mars owns
+        9: 5,  # Sagittarius - Jupiter owns
         10: 28,  # Capricorn - Mars exalted at 28°
         11: 20,  # Aquarius - Saturn owns
-        12: 27   # Pisces - Venus exalted at 27°
+        12: 27,  # Pisces - Venus exalted at 27°
     }
 
     degree_in_sign: float = longitude % 30
@@ -81,7 +89,9 @@ def get_planetary_strength(longitude: float, rashi: int) -> float:
     return max(0.0, min(100.0, strength))
 
 
-def calculate_ashtakavarga_points(planet_positions: Dict[str, float], house: int) -> int:
+def calculate_ashtakavarga_points(
+    planet_positions: Dict[str, float], house: int
+) -> int:
     """Simplified Ashtakavarga calculation"""
     points: int = 0
     base_points: Dict[str, int] = {
@@ -91,7 +101,7 @@ def calculate_ashtakavarga_points(planet_positions: Dict[str, float], house: int
         "Mercury": 4,
         "Jupiter": 5,
         "Venus": 4,
-        "Saturn": 2
+        "Saturn": 2,
     }
 
     asc: float = planet_positions.get("Ascendant", 0.0)
@@ -103,4 +113,3 @@ def calculate_ashtakavarga_points(planet_positions: Dict[str, float], house: int
                 points += base_points[planet]
 
     return min(points, 8)
-  

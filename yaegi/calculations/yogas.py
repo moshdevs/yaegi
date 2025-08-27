@@ -61,10 +61,24 @@ class YogaDetector:
                 )
         return yogas
 
-    def detect_panch_mahapurush_yogas(self, chart: KundaliChart) -> List[Dict[str, Any]]:
+    def detect_panch_mahapurush_yogas(
+        self, chart: KundaliChart
+    ) -> List[Dict[str, Any]]:
         yogas = []
-        exaltation_signs = {"Mars": 10, "Mercury": 6, "Jupiter": 4, "Venus": 12, "Saturn": 7}
-        own_signs = {"Mars": [1, 8], "Mercury": [3, 6], "Jupiter": [9, 12], "Venus": [2, 7], "Saturn": [10, 11]}
+        exaltation_signs = {
+            "Mars": 10,
+            "Mercury": 6,
+            "Jupiter": 4,
+            "Venus": 12,
+            "Saturn": 7,
+        }
+        own_signs = {
+            "Mars": [1, 8],
+            "Mercury": [3, 6],
+            "Jupiter": [9, 12],
+            "Venus": [2, 7],
+            "Saturn": [10, 11],
+        }
         yoga_names = {
             "Mars": "Ruchaka Yoga",
             "Mercury": "Bhadra Yoga",
@@ -102,13 +116,23 @@ class YogaDetector:
             "Venus": 6,
             "Saturn": 1,
         }
-        exalt_lords = {7: "Saturn", 8: "Jupiter", 4: "Moon", 12: "Jupiter", 10: "Mars", 6: "Mercury", 1: "Sun"}
+        exalt_lords = {
+            7: "Saturn",
+            8: "Jupiter",
+            4: "Moon",
+            12: "Jupiter",
+            10: "Mars",
+            6: "Mercury",
+            1: "Sun",
+        }
 
         for planet_name, debil_sign in debilitation_signs.items():
             planet = chart.get_planet(planet_name)
             if planet and planet.rashi == debil_sign:
                 exalt_lord_name = exalt_lords.get(debil_sign)
-                exalt_planet = chart.get_planet(exalt_lord_name) if exalt_lord_name else None
+                exalt_planet = (
+                    chart.get_planet(exalt_lord_name) if exalt_lord_name else None
+                )
                 if exalt_planet and exalt_planet.house in [1, 4, 7, 10]:
                     yogas.append(
                         {
@@ -159,4 +183,3 @@ class YogaDetector:
                 }
             )
         return yogas
-  

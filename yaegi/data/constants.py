@@ -105,7 +105,17 @@ NAKSHATRA_NAMES = {
 }
 
 PLANET_NAMES = {
-    "en": ["Sun", "Moon", "Mars", "Mercury", "Jupiter", "Venus", "Saturn", "Rahu", "Ketu"],
+    "en": [
+        "Sun",
+        "Moon",
+        "Mars",
+        "Mercury",
+        "Jupiter",
+        "Venus",
+        "Saturn",
+        "Rahu",
+        "Ketu",
+    ],
     "hi": ["सूर्य", "चन्द्र", "मंगल", "बुध", "गुरु", "शुक्र", "शनि", "राहु", "केतु"],
     "sa": ["सूर्य", "चन्द्र", "मंगल", "बुध", "बृहस्पति", "शुक्र", "शनि", "राहु", "केतु"],
 }
@@ -330,13 +340,41 @@ OWN_SIGNS = {
 }
 
 PLANETARY_FRIENDSHIPS = {
-    "Sun": {"friends": ["Moon", "Mars", "Jupiter"], "enemies": ["Venus", "Saturn"], "neutral": ["Mercury"]},
-    "Moon": {"friends": ["Sun", "Mercury"], "enemies": [], "neutral": ["Mars", "Jupiter", "Venus", "Saturn"]},
-    "Mars": {"friends": ["Sun", "Moon", "Jupiter"], "enemies": ["Mercury"], "neutral": ["Venus", "Saturn"]},
-    "Mercury": {"friends": ["Sun", "Venus"], "enemies": ["Moon"], "neutral": ["Mars", "Jupiter", "Saturn"]},
-    "Jupiter": {"friends": ["Sun", "Moon", "Mars"], "enemies": ["Mercury", "Venus"], "neutral": ["Saturn"]},
-    "Venus": {"friends": ["Mercury", "Saturn"], "enemies": ["Sun", "Moon"], "neutral": ["Mars", "Jupiter"]},
-    "Saturn": {"friends": ["Mercury", "Venus"], "enemies": ["Sun", "Moon", "Mars"], "neutral": ["Jupiter"]},
+    "Sun": {
+        "friends": ["Moon", "Mars", "Jupiter"],
+        "enemies": ["Venus", "Saturn"],
+        "neutral": ["Mercury"],
+    },
+    "Moon": {
+        "friends": ["Sun", "Mercury"],
+        "enemies": [],
+        "neutral": ["Mars", "Jupiter", "Venus", "Saturn"],
+    },
+    "Mars": {
+        "friends": ["Sun", "Moon", "Jupiter"],
+        "enemies": ["Mercury"],
+        "neutral": ["Venus", "Saturn"],
+    },
+    "Mercury": {
+        "friends": ["Sun", "Venus"],
+        "enemies": ["Moon"],
+        "neutral": ["Mars", "Jupiter", "Saturn"],
+    },
+    "Jupiter": {
+        "friends": ["Sun", "Moon", "Mars"],
+        "enemies": ["Mercury", "Venus"],
+        "neutral": ["Saturn"],
+    },
+    "Venus": {
+        "friends": ["Mercury", "Saturn"],
+        "enemies": ["Sun", "Moon"],
+        "neutral": ["Mars", "Jupiter"],
+    },
+    "Saturn": {
+        "friends": ["Mercury", "Venus"],
+        "enemies": ["Sun", "Moon", "Mars"],
+        "neutral": ["Jupiter"],
+    },
 }
 
 DASHA_YEARS = {

@@ -33,14 +33,26 @@ class CompatibilityAnalyzer:
         max_points = 36
 
         # Calculate each Guna
-        results["varna"] = self.calculate_varna(male_moon.nakshatra, female_moon.nakshatra)
+        results["varna"] = self.calculate_varna(
+            male_moon.nakshatra, female_moon.nakshatra
+        )
         results["vashya"] = self.calculate_vashya(male_moon.rashi, female_moon.rashi)
-        results["tara"] = self.calculate_tara(male_moon.nakshatra, female_moon.nakshatra)
-        results["yoni"] = self.calculate_yoni(male_moon.nakshatra, female_moon.nakshatra)
-        results["graha_maitri"] = self.calculate_graha_maitri(male_moon.rashi, female_moon.rashi)
-        results["gana"] = self.calculate_gana(male_moon.nakshatra, female_moon.nakshatra)
+        results["tara"] = self.calculate_tara(
+            male_moon.nakshatra, female_moon.nakshatra
+        )
+        results["yoni"] = self.calculate_yoni(
+            male_moon.nakshatra, female_moon.nakshatra
+        )
+        results["graha_maitri"] = self.calculate_graha_maitri(
+            male_moon.rashi, female_moon.rashi
+        )
+        results["gana"] = self.calculate_gana(
+            male_moon.nakshatra, female_moon.nakshatra
+        )
         results["bhakoot"] = self.calculate_bhakoot(male_moon.rashi, female_moon.rashi)
-        results["nadi"] = self.calculate_nadi(male_moon.nakshatra, female_moon.nakshatra)
+        results["nadi"] = self.calculate_nadi(
+            male_moon.nakshatra, female_moon.nakshatra
+        )
 
         # Calculate total points
         for guna, score in results.items():
@@ -66,7 +78,9 @@ class CompatibilityAnalyzer:
             "recommendations": self.get_recommendations(total_points, results),
         }
 
-    def calculate_varna(self, male_nakshatra: int, female_nakshatra: int) -> Dict[str, Any]:
+    def calculate_varna(
+        self, male_nakshatra: int, female_nakshatra: int
+    ) -> Dict[str, Any]:
         """Calculate Varna compatibility (1 point)"""
         varna_groups = {
             1: [1, 5, 9, 13, 17, 21, 25],
@@ -121,7 +135,9 @@ class CompatibilityAnalyzer:
             "compatible": points > 0,
         }
 
-    def calculate_tara(self, male_nakshatra: int, female_nakshatra: int) -> Dict[str, Any]:
+    def calculate_tara(
+        self, male_nakshatra: int, female_nakshatra: int
+    ) -> Dict[str, Any]:
         """Calculate Tara compatibility (3 points)"""
         count = abs(male_nakshatra - female_nakshatra) + 1
         tara_from_male = count % 9
@@ -149,7 +165,9 @@ class CompatibilityAnalyzer:
             "compatible": points > 1,
         }
 
-    def calculate_yoni(self, male_nakshatra: int, female_nakshatra: int) -> Dict[str, Any]:
+    def calculate_yoni(
+        self, male_nakshatra: int, female_nakshatra: int
+    ) -> Dict[str, Any]:
         """Calculate Yoni compatibility (4 points)"""
         yoni_animals = {
             1: "Horse",
@@ -219,7 +237,9 @@ class CompatibilityAnalyzer:
             "compatible": points >= 2,
         }
 
-    def calculate_graha_maitri(self, male_rashi: int, female_rashi: int) -> Dict[str, Any]:
+    def calculate_graha_maitri(
+        self, male_rashi: int, female_rashi: int
+    ) -> Dict[str, Any]:
         """Calculate Graha Maitri compatibility (5 points)"""
         rashi_lords = {
             1: "Mars",
@@ -264,7 +284,9 @@ class CompatibilityAnalyzer:
             "compatible": points >= 3,
         }
 
-    def calculate_gana(self, male_nakshatra: int, female_nakshatra: int) -> Dict[str, Any]:
+    def calculate_gana(
+        self, male_nakshatra: int, female_nakshatra: int
+    ) -> Dict[str, Any]:
         """Calculate Gana compatibility (6 points)"""
         gana_groups = {
             "deva": [1, 5, 7, 8, 13, 15, 17, 22, 27],
@@ -317,7 +339,9 @@ class CompatibilityAnalyzer:
             "compatible": points > 0,
         }
 
-    def calculate_nadi(self, male_nakshatra: int, female_nakshatra: int) -> Dict[str, Any]:
+    def calculate_nadi(
+        self, male_nakshatra: int, female_nakshatra: int
+    ) -> Dict[str, Any]:
         """Calculate Nadi compatibility (8 points)"""
         nadi_groups = {
             "aadi": [1, 2, 7, 8, 9, 13, 14, 15, 21, 22, 23],
@@ -344,27 +368,34 @@ class CompatibilityAnalyzer:
             "compatible": points > 0,
         }
 
-    def get_recommendations(self, total_points: float, results: Dict[str, Any]) -> List[str]:
+    def get_recommendations(
+        self, total_points: float, results: Dict[str, Any]
+    ) -> List[str]:
         """Get compatibility recommendations"""
         recommendations = []
 
         if total_points >= 28:
-            recommendations.append("Excellent compatibility - Marriage highly recommended")
+            recommendations.append(
+                "Excellent compatibility - Marriage highly recommended"
+            )
         elif total_points >= 20:
             recommendations.append(
                 "Good compatibility - Marriage recommended with proper rituals"
             )
         elif total_points >= 15:
-            recommendations.append("Average compatibility - Consider additional factors")
+            recommendations.append(
+                "Average compatibility - Consider additional factors"
+            )
 
         if results.get("nadi", {}).get("points", 0) == 0:
             recommendations.append("Same Nadi - Perform Nadi dosha remedies")
 
         if results.get("bhakoot", {}).get("points", 0) == 0:
-            recommendations.append("Bhakoot dosha present - Consult astrologer for remedies")
+            recommendations.append(
+                "Bhakoot dosha present - Consult astrologer for remedies"
+            )
 
         if results.get("gana", {}).get("points", 0) <= 2:
             recommendations.append("Gana mismatch - May cause temperament differences")
 
         return recommendations
-      

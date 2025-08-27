@@ -16,7 +16,7 @@ from yaegi.calculations.compatibility import CompatibilityAnalyzer
 __all__ = [
     "KundaliChart",
     "Planet",
-    "House", 
+    "House",
     "DashaPeriod",
     "KundaliGenerator",
     "PanchangGenerator",

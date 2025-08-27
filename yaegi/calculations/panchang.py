@@ -17,9 +17,21 @@ class PanchangGenerator:
         tithi_num = int(moon_phase / 12) + 1
 
         tithi_names = [
-            "Pratipada", "Dwitiya", "Tritiya", "Chaturthi", "Panchami", "Shashthi",
-            "Saptami", "Ashtami", "Navami", "Dashami", "Ekadashi", "Dwadashi",
-            "Trayodashi", "Chaturdashi", "Purnima/Amavasya"
+            "Pratipada",
+            "Dwitiya",
+            "Tritiya",
+            "Chaturthi",
+            "Panchami",
+            "Shashthi",
+            "Saptami",
+            "Ashtami",
+            "Navami",
+            "Dashami",
+            "Ekadashi",
+            "Dwadashi",
+            "Trayodashi",
+            "Chaturdashi",
+            "Purnima/Amavasya",
         ]
 
         if tithi_num > 15:
@@ -43,11 +55,33 @@ class PanchangGenerator:
         yoga_value = (sun_lon + moon_lon) % 360
         yoga_num = int(yoga_value * 27 / 360) + 1
         yoga_names = [
-            "Vishkambha", "Priti", "Ayushman", "Saubhagya", "Shobhana", "Atiganda",
-            "Sukarman", "Dhriti", "Shoola", "Ganda", "Vriddhi", "Dhruva",
-            "Vyaghata", "Harshana", "Vajra", "Siddhi", "Vyatipata", "Variyas",
-            "Parigha", "Shiva", "Siddha", "Sadhya", "Shubha", "Shukla",
-            "Brahma", "Mahendra", "Vaidhriti"
+            "Vishkambha",
+            "Priti",
+            "Ayushman",
+            "Saubhagya",
+            "Shobhana",
+            "Atiganda",
+            "Sukarman",
+            "Dhriti",
+            "Shoola",
+            "Ganda",
+            "Vriddhi",
+            "Dhruva",
+            "Vyaghata",
+            "Harshana",
+            "Vajra",
+            "Siddhi",
+            "Vyatipata",
+            "Variyas",
+            "Parigha",
+            "Shiva",
+            "Siddha",
+            "Sadhya",
+            "Shubha",
+            "Shukla",
+            "Brahma",
+            "Mahendra",
+            "Vaidhriti",
         ]
         yoga_name = yoga_names[min(yoga_num - 1, 26)]
         return yoga_num, yoga_name
@@ -59,7 +93,15 @@ class PanchangGenerator:
         if tithi_num == 15:
             return 3, "Naga"  # Purnima
 
-        karana_names = ["Bava", "Balava", "Kaulava", "Taitila", "Gara", "Vanija", "Vishti"]
+        karana_names = [
+            "Bava",
+            "Balava",
+            "Kaulava",
+            "Taitila",
+            "Gara",
+            "Vanija",
+            "Vishti",
+        ]
         karana_num = ((tithi_num - 1) % 7) + 1
         return karana_num, karana_names[karana_num - 1]
 
@@ -73,7 +115,9 @@ class PanchangGenerator:
         hour = 18 + (longitude / 15.0)
         return f"{int(hour):02d}:{int((hour % 1) * 60):02d}"
 
-    def generate_panchang(self, date: datetime, latitude: float, longitude: float) -> Dict[str, Any]:
+    def generate_panchang(
+        self, date: datetime, latitude: float, longitude: float
+    ) -> Dict[str, Any]:
         """Generate complete Panchang for a given date and location."""
         jd = datetime_to_julian_day(date)
 
@@ -100,6 +144,5 @@ class PanchangGenerator:
             "karana": {"number": karana_num, "name": karana_name},
             "sunrise": sunrise_time,
             "sunset": sunset_time,
-            "moon_phase": ((moon_lon - sun_lon + 360) % 360) / 360 * 100
-      }
-      
+            "moon_phase": ((moon_lon - sun_lon + 360) % 360) / 360 * 100,
+        }

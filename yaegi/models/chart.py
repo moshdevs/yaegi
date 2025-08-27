@@ -68,4 +68,3 @@ class KundaliChart:
             "planets": [planet.to_dict() for planet in self.planets],
             "houses": [house.to_dict() for house in self.houses],
         }
-      

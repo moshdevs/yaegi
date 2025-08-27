@@ -1,5 +1,6 @@
 from dataclasses import dataclass
 
+
 @dataclass
 class Planet:
     name: str
@@ -44,5 +45,4 @@ class Planet:
             "house": self.house,
             "is_retrograde": self.is_retrograde,
             "dms": self.dms,
-      }
-      
+        }

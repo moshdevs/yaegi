@@ -38,7 +38,9 @@ def kundali_command(args):
             print(f"Ascendant: {chart.lagna_lord} at {chart.ascendant:.2f}°")
             print("\nPlanetary Positions:")
             for planet in chart.planets:
-                print(f"{planet.name}: {planet.dms} in {planet.rashi} rashi, House {planet.house}")
+                print(
+                    f"{planet.name}: {planet.dms} in {planet.rashi} rashi, House {planet.house}"
+                )
     except Exception as e:
         print(f"Error generating Kundali: {e}")
 
@@ -167,38 +169,66 @@ def main():
     kundali_parser = subparsers.add_parser("kundali", help="Generate Kundali chart")
     kundali_parser.add_argument("--date", required=True, help="Birth date (YYYY-MM-DD)")
     kundali_parser.add_argument("--time", required=True, help="Birth time (HH:MM)")
-    kundali_parser.add_argument("--latitude", type=float, required=True, help="Latitude")
-    kundali_parser.add_argument("--longitude", type=float, required=True, help="Longitude")
+    kundali_parser.add_argument(
+        "--latitude", type=float, required=True, help="Latitude"
+    )
+    kundali_parser.add_argument(
+        "--longitude", type=float, required=True, help="Longitude"
+    )
     kundali_parser.add_argument("--timezone", default="UTC", help="Timezone")
 
     panchang_parser = subparsers.add_parser("panchang", help="Generate Panchang")
     panchang_parser.add_argument("--date", required=True, help="Date (YYYY-MM-DD)")
-    panchang_parser.add_argument("--latitude", type=float, required=True, help="Latitude")
-    panchang_parser.add_argument("--longitude", type=float, required=True, help="Longitude")
+    panchang_parser.add_argument(
+        "--latitude", type=float, required=True, help="Latitude"
+    )
+    panchang_parser.add_argument(
+        "--longitude", type=float, required=True, help="Longitude"
+    )
 
     yogas_parser = subparsers.add_parser("yogas", help="Detect yogas")
     yogas_parser.add_argument("--date", required=True, help="Birth date (YYYY-MM-DD)")
     yogas_parser.add_argument("--time", required=True, help="Birth time (HH:MM)")
     yogas_parser.add_argument("--latitude", type=float, required=True, help="Latitude")
-    yogas_parser.add_argument("--longitude", type=float, required=True, help="Longitude")
+    yogas_parser.add_argument(
+        "--longitude", type=float, required=True, help="Longitude"
+    )
     yogas_parser.add_argument("--timezone", default="UTC", help="Timezone")
 
     dasha_parser = subparsers.add_parser("dasha", help="Calculate Dasha periods")
     dasha_parser.add_argument("--date", required=True, help="Birth date (YYYY-MM-DD)")
     dasha_parser.add_argument("--time", required=True, help="Birth time (HH:MM)")
     dasha_parser.add_argument("--latitude", type=float, required=True, help="Latitude")
-    dasha_parser.add_argument("--longitude", type=float, required=True, help="Longitude")
+    dasha_parser.add_argument(
+        "--longitude", type=float, required=True, help="Longitude"
+    )
     dasha_parser.add_argument("--timezone", default="UTC", help="Timezone")
 
     comp_parser = subparsers.add_parser("compatibility", help="Analyze compatibility")
-    comp_parser.add_argument("--male-date", required=True, help="Male birth date (YYYY-MM-DD)")
-    comp_parser.add_argument("--male-time", required=True, help="Male birth time (HH:MM)")
-    comp_parser.add_argument("--male-lat", type=float, required=True, help="Male latitude")
-    comp_parser.add_argument("--male-lon", type=float, required=True, help="Male longitude")
-    comp_parser.add_argument("--female-date", required=True, help="Female birth date (YYYY-MM-DD)")
-    comp_parser.add_argument("--female-time", required=True, help="Female birth time (HH:MM)")
-    comp_parser.add_argument("--female-lat", type=float, required=True, help="Female latitude")
-    comp_parser.add_argument("--female-lon", type=float, required=True, help="Female longitude")
+    comp_parser.add_argument(
+        "--male-date", required=True, help="Male birth date (YYYY-MM-DD)"
+    )
+    comp_parser.add_argument(
+        "--male-time", required=True, help="Male birth time (HH:MM)"
+    )
+    comp_parser.add_argument(
+        "--male-lat", type=float, required=True, help="Male latitude"
+    )
+    comp_parser.add_argument(
+        "--male-lon", type=float, required=True, help="Male longitude"
+    )
+    comp_parser.add_argument(
+        "--female-date", required=True, help="Female birth date (YYYY-MM-DD)"
+    )
+    comp_parser.add_argument(
+        "--female-time", required=True, help="Female birth time (HH:MM)"
+    )
+    comp_parser.add_argument(
+        "--female-lat", type=float, required=True, help="Female latitude"
+    )
+    comp_parser.add_argument(
+        "--female-lon", type=float, required=True, help="Female longitude"
+    )
     comp_parser.add_argument("--timezone", default="UTC", help="Timezone")
 
     args = parser.parse_args()
@@ -219,4 +249,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-            

@@ -57,9 +57,18 @@ class KundaliGenerator:
 
         # Define house lords based on rashi
         house_lords = {
-            1: "Mars", 2: "Venus", 3: "Mercury", 4: "Moon",
-            5: "Sun", 6: "Mercury", 7: "Venus", 8: "Mars",
-            9: "Jupiter", 10: "Saturn", 11: "Saturn", 12: "Jupiter",
+            1: "Mars",
+            2: "Venus",
+            3: "Mercury",
+            4: "Moon",
+            5: "Sun",
+            6: "Mercury",
+            7: "Venus",
+            8: "Mars",
+            9: "Jupiter",
+            10: "Saturn",
+            11: "Saturn",
+            12: "Jupiter",
         }
 
         # Create House objects
@@ -129,7 +138,9 @@ class KundaliGenerator:
                 Planet(
                     name=planet.name,
                     longitude=divisional_longitude,
-                    house=calculate_house_position(divisional_longitude, birth_chart.ascendant),
+                    house=calculate_house_position(
+                        divisional_longitude, birth_chart.ascendant
+                    ),
                 )
             )
 

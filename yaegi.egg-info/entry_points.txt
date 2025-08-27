@@ -1,0 +1,2 @@
+[console_scripts]
+yaegi = yaegi.cli.main:main

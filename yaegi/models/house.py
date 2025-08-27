@@ -1,5 +1,6 @@
 from dataclasses import dataclass, field
 
+
 @dataclass
 class House:
     number: int
@@ -36,4 +37,3 @@ class House:
             "is_occupied": self.is_occupied,
             "planet_count": self.planet_count,
         }
-      

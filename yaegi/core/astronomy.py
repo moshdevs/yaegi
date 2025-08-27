@@ -62,7 +62,9 @@ class AstronomyEngine:
         lst_rad: float = math.radians(lst)
 
         y: float = math.sin(lst_rad)
-        x: float = math.cos(lst_rad) * math.cos(epsilon_rad) + math.tan(lat_rad) * math.sin(epsilon_rad)
+        x: float = math.cos(lst_rad) * math.cos(epsilon_rad) + math.tan(
+            lat_rad
+        ) * math.sin(epsilon_rad)
         ascendant: float = math.degrees(math.atan2(y, x))
 
         if ascendant < 0:
@@ -73,9 +75,13 @@ class AstronomyEngine:
 
     def get_all_planets(self, julian_day: float) -> Dict[str, float]:
         """Get sidereal longitudes for all major planets"""
-        return {planet: self.get_sidereal_longitude(planet, julian_day) for planet in self.PLANET_SPEEDS}
+        return {
+            planet: self.get_sidereal_longitude(planet, julian_day)
+            for planet in self.PLANET_SPEEDS
+        }
 
-    def calculate_houses(self, ascendant: float, method: str = "placidus") -> List[float]:
+    def calculate_houses(
+        self, ascendant: float, method: str = "placidus"
+    ) -> List[float]:
         """Calculate house cusps using equal house system"""
         return [(ascendant + i * 30) % 360.0 for i in range(12)]
-  

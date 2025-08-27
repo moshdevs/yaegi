@@ -23,11 +23,19 @@ def datetime_to_julian_day(dt: datetime) -> float:
     a: int = year // 100
     b: int = 2 - a + (a // 4)
 
-    if year < 1582 or (year == 1582 and month < 10) or (year == 1582 and month == 10 and day < 15):
+    if (
+        year < 1582
+        or (year == 1582 and month < 10)
+        or (year == 1582 and month == 10 and day < 15)
+    ):
         b = 0
 
-    jd: float = int(365.25 * (year + 4716)) + int(30.6001 * (month + 1)) + day + b - 1524.5
-    time_fraction: float = (hour + minute / 60 + (second + microsecond / 1_000_000) / 3600) / 24
+    jd: float = (
+        int(365.25 * (year + 4716)) + int(30.6001 * (month + 1)) + day + b - 1524.5
+    )
+    time_fraction: float = (
+        hour + minute / 60 + (second + microsecond / 1_000_000) / 3600
+    ) / 24
     jd += time_fraction
 
     return jd
