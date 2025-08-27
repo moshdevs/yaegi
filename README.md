@@ -1,7 +1,7 @@
 # 🌌 Yaegi – Vedic Astrology Library  
 
 <p align="center">
-  <img width="250" src="./docs/banner-light.png" />
+  <img width="250" src="./assets/yaegi.webp" />
 </p>
 
 <p align="center">
