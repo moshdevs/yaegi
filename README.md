@@ -10,7 +10,7 @@
 
 <p align="center">
   [<a href="https://github.com/moshdevs/yaegi/blob/master/guide/docs.md">📖 Docs</a>] 
-  [<a href="https://github.com/moshdevs/yaegi/discussions">💬 Discussions</a>] 
+  [<a href="https://github.com/moshdevs/yaegi/blob/master/.github/CONTRIBUTING.md">✨ Contribution</a>] 
   [<a href="https://pypi.org/project/yaegi/">⬇️ PyPI</a>] 
 </p>
 
