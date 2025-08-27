@@ -10,13 +10,13 @@
 
 <p align="center">
   [<a href="https://yaegi.readthedocs.io">📖 Docs</a>] 
-  [<a href="https://github.com/yaegi/yaegi/discussions">💬 Discussions</a>] 
+  [<a href="https://github.com/moshdevs/yaegi/discussions">💬 Discussions</a>] 
   [<a href="https://pypi.org/project/yaegi/">⬇️ PyPI</a>] 
 </p>
 
 <p align="center">
   <a href="https://badge.fury.io/py/yaegi"><img src="https://badge.fury.io/py/yaegi.svg"></a>
-  <a href="https://www.python.org/downloads/"><img src="https://img.shields.io/badge/python-3.8+-blue.svg"></a>
+  <a href="https://www.python.org/downloads/"><img src="https://img.shields.io/badge/python-3.11+-blue.svg"></a>
   <a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/badge/License-MIT-yellow.svg"></a>
 </p>
 
@@ -96,7 +96,7 @@ yaegi dasha --date 1990-05-15 --time 14:30 --latitude 28.61 --longitude 77.21
 ## 🛠️ Development
 
 ```bash
-git clone https://github.com/yaegi/yaegi
+git clone https://github.com/moshdevs/yaegi
 cd yaegi
 pip install -e .
 ```
@@ -138,4 +138,4 @@ MIT License – see [LICENSE](LICENSE).
 
 ---
 
-⭐ [Star us on GitHub](https://github.com/yaegi/yaegi) if you like the project!  
+⭐ [Star us on GitHub](https://github.com/moshdevs/yaegi) if you like the project!  
