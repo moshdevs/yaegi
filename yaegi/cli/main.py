@@ -1,3 +1,4 @@
+from __future__ import annotations
 import argparse
 import json
 from datetime import datetime
@@ -22,7 +23,6 @@ def kundali_command(args):
     """Generate Kundali chart"""
     try:
         birth_datetime = parse_datetime(args.date, args.time)
-
         generator = KundaliGenerator()
         chart = generator.generate_chart(
             birth_date=birth_datetime,
@@ -30,7 +30,6 @@ def kundali_command(args):
             longitude=args.longitude,
             timezone=args.timezone,
         )
-
         if args.format == "json":
             print(json.dumps(chart.to_dict(), indent=2, default=str))
         else:
@@ -40,7 +39,6 @@ def kundali_command(args):
             print("\nPlanetary Positions:")
             for planet in chart.planets:
                 print(f"{planet.name}: {planet.dms} in {planet.rashi} rashi, House {planet.house}")
-
     except Exception as e:
         print(f"Error generating Kundali: {e}")
 
@@ -49,14 +47,10 @@ def panchang_command(args):
     """Generate Panchang"""
     try:
         date = datetime.strptime(args.date, "%Y-%m-%d")
-
         generator = PanchangGenerator()
         panchang = generator.generate_panchang(
-            date=date,
-            latitude=args.latitude,
-            longitude=args.longitude,
+            date=date, latitude=args.latitude, longitude=args.longitude
         )
-
         if args.format == "json":
             print(json.dumps(panchang, indent=2))
         else:
@@ -67,7 +61,6 @@ def panchang_command(args):
             print(f"Karana: {panchang['karana']['name']}")
             print(f"Sunrise: {panchang['sunrise']}")
             print(f"Sunset: {panchang['sunset']}")
-
     except Exception as e:
         print(f"Error generating Panchang: {e}")
 
@@ -76,7 +69,6 @@ def yogas_command(args):
     """Detect yogas in chart"""
     try:
         birth_datetime = parse_datetime(args.date, args.time)
-
         generator = KundaliGenerator()
         chart = generator.generate_chart(
             birth_date=birth_datetime,
@@ -84,10 +76,8 @@ def yogas_command(args):
             longitude=args.longitude,
             timezone=args.timezone,
         )
-
         detector = YogaDetector()
         yogas = detector.detect_all_yogas(chart)
-
         if args.format == "json":
             print(json.dumps(yogas, indent=2))
         else:
@@ -96,7 +86,6 @@ def yogas_command(args):
                 print(f"\n{yoga['name']} ({yoga['type']})")
                 print(f"Description: {yoga['description']}")
                 print(f"Strength: {yoga['strength']}")
-
     except Exception as e:
         print(f"Error detecting yogas: {e}")
 
@@ -105,7 +94,6 @@ def dasha_command(args):
     """Calculate Dasha periods"""
     try:
         birth_datetime = parse_datetime(args.date, args.time)
-
         generator = KundaliGenerator()
         chart = generator.generate_chart(
             birth_date=birth_datetime,
@@ -113,11 +101,9 @@ def dasha_command(args):
             longitude=args.longitude,
             timezone=args.timezone,
         )
-
         calculator = DashaCalculator()
         dasha_system = calculator.calculate_vimshottari_dasha(chart)
         current_dasha = calculator.get_current_dasha(dasha_system)
-
         if args.format == "json":
             print(json.dumps(current_dasha, indent=2, default=str))
         else:
@@ -126,12 +112,10 @@ def dasha_command(args):
                 print(f"Current Mahadasha: {maha['planet']}")
                 print(f"Period: {maha['start_date'][:10]} to {maha['end_date'][:10]}")
                 print(f"Remaining: {maha['remaining_days']} days")
-
             if current_dasha["antardasha"]:
                 antar = current_dasha["antardasha"]
                 print(f"\nCurrent Antardasha: {antar['planet']}")
                 print(f"Period: {antar['start_date'][:10]} to {antar['end_date'][:10]}")
-
     except Exception as e:
         print(f"Error calculating Dasha: {e}")
 
@@ -141,26 +125,21 @@ def compatibility_command(args):
     try:
         male_datetime = parse_datetime(args.male_date, args.male_time)
         female_datetime = parse_datetime(args.female_date, args.female_time)
-
         generator = KundaliGenerator()
-
         male_chart = generator.generate_chart(
             birth_date=male_datetime,
             latitude=args.male_lat,
             longitude=args.male_lon,
             timezone=args.timezone,
         )
-
         female_chart = generator.generate_chart(
             birth_date=female_datetime,
             latitude=args.female_lat,
             longitude=args.female_lon,
             timezone=args.timezone,
         )
-
         analyzer = CompatibilityAnalyzer()
         result = analyzer.analyze_compatibility(male_chart, female_chart)
-
         if args.format == "json":
             print(json.dumps(result, indent=2, default=str))
         else:
@@ -168,12 +147,10 @@ def compatibility_command(args):
             print(f"Total Points: {result['total_points']}/36")
             print(f"Percentage: {result['percentage']:.1f}%")
             print(f"Compatibility: {result['compatibility']}")
-
             if result["recommendations"]:
                 print("\nRecommendations:")
                 for rec in result["recommendations"]:
                     print(f"- {rec}")
-
     except Exception as e:
         print(f"Error analyzing compatibility: {e}")
 
@@ -242,4 +219,4 @@ def main():
 
 if __name__ == "__main__":
     main()
-          
+            
