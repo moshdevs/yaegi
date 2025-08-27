@@ -1,3 +1,4 @@
+from __future__ import annotations
 from datetime import datetime, timedelta
 from typing import List, Dict, Any
 from yaegi.models.dasha import DashaPeriod, VimshottariDasha
@@ -34,7 +35,7 @@ class DashaCalculator:
             "Mercury",
         ] * 3  # Repeat for 27 nakshatras
 
-    def calculate_vimshottari_dasha(self, chart: KundaliChart) -> VimshottariDasha:
+    def calculate_vimshottari_dasha(self, chart: "KundaliChart") -> "VimshottariDasha":
         """Calculate complete Vimshottari Dasha system"""
         moon = chart.get_planet("Moon")
         if not moon:
@@ -51,13 +52,9 @@ class DashaCalculator:
         first_dasha_remaining = self.dasha_periods[start_lord] * (1 - nakshatra_position)
 
         # Generate all dasha periods
-        periods = self._generate_mahadasha_periods(
-            chart.birth_date, start_lord, first_dasha_remaining
-        )
+        periods = self._generate_mahadasha_periods(chart.birth_date, start_lord, first_dasha_remaining)
 
-        return VimshottariDasha(
-            birth_date=chart.birth_date, moon_nakshatra=birth_nakshatra, periods=periods
-        )
+        return VimshottariDasha(birth_date=chart.birth_date, moon_nakshatra=birth_nakshatra, periods=periods)
 
     def _generate_mahadasha_periods(
         self, start_date: datetime, start_lord: str, first_remaining: float
@@ -77,7 +74,7 @@ class DashaCalculator:
             raise ValueError(f"Invalid dasha lord: {start_lord}")
 
         # Generate periods for multiple cycles
-        for cycle in range(3):  # Usually 2-3 cycles cover a lifetime
+        for cycle in range(3):
             for i in range(9):
                 lord_index = (start_index + i) % 9
                 lord = self.nakshatra_lords[lord_index]
@@ -146,9 +143,7 @@ class DashaCalculator:
 
         return periods
 
-    def get_current_dasha(
-        self, dasha_system: VimshottariDasha, date: datetime = None
-    ) -> Dict[str, Any]:
+    def get_current_dasha(self, dasha_system: "VimshottariDasha", date: datetime = None) -> Dict[str, Any]:
         """Get current running Dasha periods"""
         if date is None:
             date = datetime.now()
@@ -233,7 +228,4 @@ class DashaCalculator:
             },
         }
 
-        return predictions.get(
-            planet, {"general": "Consult astrologer for specific predictions"}
-            )
-    
+        return predictions.get(planet, {"general": "Consult astrologer for specific predictions"})
