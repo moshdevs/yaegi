@@ -1,0 +1,140 @@
+{
+  "raj_yogas": [
+    {
+      "name": "Dharma Karmadhipati Yoga",
+      "description": "9th and 10th lord conjunction/mutual aspect",
+      "conditions": ["9th_lord_with_10th_lord", "mutual_aspect_9_10"],
+      "result": "High status, spiritual inclination, success in career",
+      "strength": "strong"
+    },
+    {
+      "name": "Viparita Raja Yoga",
+      "description": "6th, 8th, 12th lords in dusthana houses",
+      "conditions": ["dusthana_lords_in_dusthana"],
+      "result": "Success through obstacles, unexpected gains",
+      "strength": "medium"
+    }
+  ],
+  "dhan_yogas": [
+    {
+      "name": "Lakshmi Yoga",
+      "description": "9th lord in own/exaltation with Venus in kendra",
+      "conditions": ["9th_lord_strong", "venus_in_kendra"],
+      "result": "Wealth, luxury, comfort",
+      "strength": "strong"
+    },
+    {
+      "name": "Kubera Yoga",
+      "description": "2nd, 5th, 11th lords in mutual kendra/trine",
+      "conditions": ["wealth_lords_well_placed"],
+      "result": "Accumulated wealth, financial stability",
+      "strength": "strong"
+    }
+  ],
+  "panch_mahapurush": [
+    {
+      "name": "Ruchaka Yoga",
+      "planet": "Mars",
+      "conditions": ["mars_in_kendra", "mars_in_own_exalt"],
+      "result": "Courage, leadership, military honors",
+      "strength": "very_strong"
+    },
+    {
+      "name": "Bhadra Yoga", 
+      "planet": "Mercury",
+      "conditions": ["mercury_in_kendra", "mercury_in_own_exalt"],
+      "result": "Intelligence, communication skills, learning",
+      "strength": "very_strong"
+    },
+    {
+      "name": "Hamsa Yoga",
+      "planet": "Jupiter", 
+      "conditions": ["jupiter_in_kendra", "jupiter_in_own_exalt"],
+      "result": "Wisdom, spirituality, teaching abilities",
+      "strength": "very_strong"
+    },
+    {
+      "name": "Malavya Yoga",
+      "planet": "Venus",
+      "conditions": ["venus_in_kendra", "venus_in_own_exalt"], 
+      "result": "Beauty, arts, luxury, relationships",
+      "strength": "very_strong"
+    },
+    {
+      "name": "Sasha Yoga",
+      "planet": "Saturn",
+      "conditions": ["saturn_in_kendra", "saturn_in_own_exalt"],
+      "result": "Authority, discipline, long life",
+      "strength": "very_strong"
+    }
+  ],
+  "special_yogas": [
+    {
+      "name": "Gajakesari Yoga",
+      "description": "Jupiter and Moon in kendra from each other",
+      "conditions": ["jupiter_moon_kendra"],
+      "result": "Wisdom, respect, prosperity",
+      "strength": "strong"
+    },
+    {
+      "name": "Chandra Mangal Yoga",
+      "description": "Moon and Mars conjunction",
+      "conditions": ["moon_mars_conjunction"],
+      "result": "Wealth through property, mother's support",
+      "strength": "medium"
+    },
+    {
+      "name": "Budhaditya Yoga",
+      "description": "Mercury and Sun conjunction (not combusted)",
+      "conditions": ["mercury_sun_conjunction", "mercury_not_combusted"],
+      "result": "Intelligence, name, fame",
+      "strength": "medium"
+    },
+    {
+      "name": "Guru Chandal Yoga",
+      "description": "Jupiter with Rahu/Ketu",
+      "conditions": ["jupiter_rahu_conjunction", "jupiter_ketu_conjunction"],
+      "result": "Unconventional wisdom, challenges in beliefs", 
+      "strength": "negative"
+    }
+  ],
+  "dosha_yogas": [
+    {
+      "name": "Kaal Sarpa Yoga",
+      "description": "All planets between Rahu and Ketu",
+      "conditions": ["planets_between_rahu_ketu"],
+      "result": "Obstacles, delays, but eventual success",
+      "strength": "challenging"
+    },
+    {
+      "name": "Manglik Dosha",
+      "description": "Mars in 1st, 4th, 7th, 8th, 12th house",
+      "conditions": ["mars_in_dosha_houses"],
+      "result": "Challenges in marriage, relationships",
+      "strength": "negative"
+    },
+    {
+      "name": "Pitra Dosha",
+      "description": "Sun with Rahu or Saturn",
+      "conditions": ["sun_rahu_conjunction", "sun_saturn_conjunction"],
+      "result": "Ancestral issues, father's health",
+      "strength": "negative"
+    }
+  ],
+  "remedial_yogas": [
+    {
+      "name": "Neecha Bhanga Raja Yoga",
+      "description": "Debilitated planet with cancellation conditions",
+      "conditions": ["debilitated_planet", "cancellation_present"],
+      "result": "Transformation of weakness to strength",
+      "strength": "transformative"
+    },
+    {
+      "name": "Parivartana Yoga",
+      "description": "Mutual exchange of houses by two planets",
+      "conditions": ["mutual_exchange"],
+      "result": "Enhanced results of both planets",
+      "strength": "medium"
+    }
+  ]
+}
